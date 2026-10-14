@@ -1093,7 +1093,7 @@ if(mq){const ks=Object.keys(TECH);const one=ks.map(k=>`<span class="mq-item" sty
   const ready=()=> eye && eye.classList.contains('show');
   const busy=()=> document.getElementById('game')||document.getElementById('bh')||!ready();
   let shown=false, dismissed=false, contactMade=false, hideT;
-  function show(){ if(shown||busy()||dismissed) return; shown=true; syncColor(); cta.style.display='flex'; clearTimeout(hideT); requestAnimationFrame(()=>{ cta.classList.add('show'); const fw=cta.querySelector('.cta-flyin'); if(fw) fw.animate([{transform:'translateX(240px) rotate(14deg)',opacity:0},{transform:'translateX(-16px) rotate(-4deg)',opacity:1,offset:.7},{transform:'translateX(0) rotate(0deg)',opacity:1}],{duration:760,easing:'cubic-bezier(.2,.8,.3,1)'}); }); inv.style.opacity='0'; inv.style.pointerEvents='none'; if(eye){ eye.style.opacity='0'; eye.style.pointerEvents='none'; } }
+  function show(){ if(shown||busy()||dismissed) return; shown=true; syncColor(); clearTimeout(hideT); cta.style.display='flex'; void cta.offsetWidth; cta.classList.add('show'); const fw=cta.querySelector('.cta-flyin'); if(fw) fw.animate([{transform:'translateX(240px) rotate(14deg)',opacity:0},{transform:'translateX(-16px) rotate(-4deg)',opacity:1,offset:.7},{transform:'translateX(0) rotate(0deg)',opacity:1}],{duration:760,easing:'cubic-bezier(.2,.8,.3,1)'}); inv.style.opacity='0'; inv.style.pointerEvents='none'; if(eye){ eye.style.opacity='0'; eye.style.pointerEvents='none'; } }
   function hide(){ if(!shown) return; shown=false; cta.classList.remove('show'); hideT=setTimeout(()=>{ if(!shown) cta.style.display='none'; },520); inv.style.opacity=''; inv.style.pointerEvents=''; if(eye){ eye.style.opacity=''; eye.style.pointerEvents=''; } }
 
   function buildContact(){
